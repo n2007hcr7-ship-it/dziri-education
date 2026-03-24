@@ -1,0 +1,5 @@
+{
+  "name": "Dziri Education - دزيري تعليم",
+  "description": "Professional Algerian educational platform for teachers and students.",
+  "requestFramePermissions": ["camera", "microphone"]
+}

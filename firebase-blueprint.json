@@ -1,0 +1,138 @@
+{
+  "entities": {
+    "User": {
+      "title": "User",
+      "description": "Core user profile data",
+      "type": "object",
+      "properties": {
+        "name": { "type": "string" },
+        "phone": { "type": "string" },
+        "wilaya": { "type": "string" },
+        "role": { "type": "string", "enum": ["teacher", "student"] },
+        "photoUrl": { "type": "string" },
+        "createdAt": { "type": "string", "format": "date-time" }
+      },
+      "required": ["name", "role", "createdAt"]
+    },
+    "Teacher": {
+      "title": "Teacher",
+      "description": "Teacher specific data",
+      "type": "object",
+      "properties": {
+        "name": { "type": "string" },
+        "subject": { "type": "string" },
+        "levels": { "type": "array", "items": { "type": "string" } },
+        "wilaya": { "type": "string" },
+        "bio": { "type": "string" },
+        "photoUrl": { "type": "string" },
+        "certificationUrl": { "type": "string" },
+        "isVerified": { "type": "boolean" },
+        "plan": { "type": "string", "enum": ["free", "bronze", "silver", "gold"] },
+        "planExpiry": { "type": "string", "format": "date-time" },
+        "balance": { "type": "number" },
+        "totalStudents": { "type": "number" },
+        "totalViews": { "type": "number" },
+        "rating": { "type": "number" },
+        "totalRatings": { "type": "number" },
+        "ccp": { "type": "string" },
+        "edahabia": { "type": "string" },
+        "monthlyPrice": { "type": "number" },
+        "createdAt": { "type": "string", "format": "date-time" }
+      }
+    },
+    "Student": {
+      "title": "Student",
+      "description": "Student specific data",
+      "type": "object",
+      "properties": {
+        "name": { "type": "string" },
+        "wilaya": { "type": "string" },
+        "level": { "type": "string" },
+        "balance": { "type": "number" },
+        "downloadedLessons": { "type": "array", "items": { "type": "string" } },
+        "createdAt": { "type": "string", "format": "date-time" }
+      }
+    },
+    "Lesson": {
+      "title": "Lesson",
+      "description": "Educational content",
+      "type": "object",
+      "properties": {
+        "teacherId": { "type": "string" },
+        "title": { "type": "string" },
+        "description": { "type": "string" },
+        "subject": { "type": "string" },
+        "level": { "type": "string" },
+        "month": { "type": "number" },
+        "type": { "type": "string", "enum": ["video", "pdf", "quiz"] },
+        "access": { "type": "string", "enum": ["free", "paid"] },
+        "price": { "type": "number" },
+        "videoUrl": { "type": "string" },
+        "pdfUrl": { "type": "string" },
+        "thumbnailUrl": { "type": "string" },
+        "duration": { "type": "number" },
+        "views": { "type": "number" },
+        "allowDownload": { "type": "boolean" },
+        "createdAt": { "type": "string", "format": "date-time" }
+      }
+    },
+    "Subscription": {
+      "title": "Subscription",
+      "description": "Student subscription to a teacher",
+      "type": "object",
+      "properties": {
+        "studentId": { "type": "string" },
+        "teacherId": { "type": "string" },
+        "amount": { "type": "number" },
+        "startDate": { "type": "string", "format": "date-time" },
+        "endDate": { "type": "string", "format": "date-time" },
+        "status": { "type": "string", "enum": ["active", "expired"] },
+        "monthsUnlocked": { "type": "array", "items": { "type": "number" } }
+      }
+    },
+    "LiveStream": {
+      "title": "LiveStream",
+      "description": "Live class data",
+      "type": "object",
+      "properties": {
+        "teacherId": { "type": "string" },
+        "title": { "type": "string" },
+        "subject": { "type": "string" },
+        "level": { "type": "string" },
+        "price": { "type": "number" },
+        "isFree": { "type": "boolean" },
+        "scheduledAt": { "type": "string", "format": "date-time" },
+        "status": { "type": "string", "enum": ["scheduled", "live", "ended"] },
+        "agoraChannel": { "type": "string" },
+        "viewersCount": { "type": "number" },
+        "createdAt": { "type": "string", "format": "date-time" }
+      }
+    }
+  },
+  "firestore": {
+    "/users/{userId}": {
+      "schema": "User",
+      "description": "User profiles"
+    },
+    "/teachers/{teacherId}": {
+      "schema": "Teacher",
+      "description": "Teacher profiles"
+    },
+    "/students/{studentId}": {
+      "schema": "Student",
+      "description": "Student profiles"
+    },
+    "/lessons/{lessonId}": {
+      "schema": "Lesson",
+      "description": "Lessons"
+    },
+    "/subscriptions/{subId}": {
+      "schema": "Subscription",
+      "description": "Subscriptions"
+    },
+    "/liveStreams/{liveId}": {
+      "schema": "LiveStream",
+      "description": "Live streams"
+    }
+  }
+}

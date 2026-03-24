@@ -1,0 +1,35 @@
+@import "tailwindcss";
+@import url('https://fonts.googleapis.com/css2?family=Cairo:wght@200;300;400;500;600;700;800;900&display=swap');
+
+@theme {
+  --font-sans: "Cairo", ui-sans-serif, system-ui, sans-serif;
+  --color-primary-blue: #3B82F6;
+  --color-primary-purple: #8B5CF6;
+  --color-vibrant-blue: #2563EB;
+  --color-vibrant-purple: #7C3AED;
+}
+
+body {
+  font-family: "Cairo", sans-serif;
+  direction: rtl;
+  background-color: #F8FAFC;
+  color: #0F172A;
+}
+
+.glass-morphism {
+  background: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.vibrant-gradient {
+  background: linear-gradient(135deg, #3B82F6 0%, #8B5CF6 100%);
+}
+
+.blue-gradient {
+  background: linear-gradient(135deg, #2563EB 0%, #3B82F6 100%);
+}
+
+.purple-gradient {
+  background: linear-gradient(135deg, #7C3AED 0%, #8B5CF6 100%);
+}
